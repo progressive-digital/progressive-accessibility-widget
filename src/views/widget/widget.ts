@@ -6,6 +6,11 @@ import { ISeinnaSettings } from "../../sienna";
 import translateMenu from "../menu/translateMenu";
 
 export function renderWidget(options: ISeinnaSettings) {
+    const wrapper = document.querySelector(".progressive-accessibility-block");
+    if (!wrapper) {
+        return;
+    }
+
     let {
         position = "bottom-left",
         offset=[20,20]
@@ -88,12 +93,10 @@ export function renderWidget(options: ISeinnaSettings) {
             });
         }
     });
-
     
     translateMenu(widget);
-    
-    document.body.appendChild(widget);
 
+    wrapper.appendChild(widget);
 
     return widget;
 }
