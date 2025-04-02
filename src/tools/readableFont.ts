@@ -7,7 +7,7 @@ export const readableFontConfig: IToolConfig = {
     selector: `html`,
     childrenSelector: ['', '*:not(.material-icons,.fa)', ...TEXT_SELECTORS],
     styles: {
-        'font-family': 'OpenDyslexic3,Comic Sans MS,Arial,Helvetica,sans-serif'
+        'font-family': 'OpenDyslexic,Comic Sans MS,Arial,Helvetica,sans-serif'
     }
 }
 
