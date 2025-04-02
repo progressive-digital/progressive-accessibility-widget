@@ -1,5 +1,3 @@
-const webpack = require('webpack');
-const packageJson = require('./package.json');
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 
@@ -9,10 +7,12 @@ module.exports = {
   mode: "development",
   entry: {
     sienna: "./src/entry.ts",
+    styles: "./src/styles.scss",
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
     filename: '[name].min.js',
+    path: path.resolve(__dirname, 'dist'),
+    pathinfo: true,
   },
   resolve: {
     extensions: ['.ts', '.js', '.json'],
@@ -35,31 +35,25 @@ module.exports = {
           },
         },
         {
-            test: /\.css$/i,
-            use: [
-              {
-                  loader: 'style-loader',
-                  options: {
-                  injectType: 'singletonStyleTag',
-                  },
+          test: /\.(css|scss)$/,
+          use: [
+            MiniCssExtractPlugin.loader,
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 2,
               },
-              MiniCssExtractPlugin.loader,
-              {
-                  loader: 'css-loader',
-                  options: {
-                    importLoaders: 1,
-                  },
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                postcssOptions: {
+                  plugins: [['autoprefixer']],
+                },
               },
-              {
-                  loader: 'postcss-loader',
-                  options: {
-                  postcssOptions: {
-                      plugins: [['autoprefixer']],
-                  },
-                  },
-              },
-              'raw-loader',
-            ],
+            },
+            'sass-loader',
+          ],
         },
         {
           test: /\.svg$/,
@@ -77,16 +71,6 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin({
       filename: '[name].css',
-      chunkFilename: '[id].css',
-    }),
-    new webpack.BannerPlugin({
-      banner: `Sienna Accessibility Widget v${packageJson.version}
-(c) ${new Date().getFullYear()} ${packageJson.author}
-License: ${packageJson.license}
-Home Page : ${packageJson.homepage}
-Repository: ${packageJson.repository.url}
-`,
-      entryOnly: true,
     }),
   ],
 };

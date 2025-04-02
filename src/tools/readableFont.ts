@@ -7,14 +7,8 @@ export const readableFontConfig: IToolConfig = {
     selector: `html`,
     childrenSelector: ['', '*:not(.material-icons,.fa)', ...TEXT_SELECTORS],
     styles: {
-        'font-family': 'OpenDyslexic3,Comic Sans MS,Arial,Helvetica,sans-serif'
-    },
-    css: `
-        @font-face {
-            font-family: OpenDyslexic3;
-            src: url("https://website-widgets.pages.dev/fonts/OpenDyslexic3-Regular.woff") format("woff"), url("https://website-widgets.pages.dev/fonts/OpenDyslexic3-Regular.ttf") format("truetype");
-        }
-    `
+        'font-family': 'OpenDyslexic,Comic Sans MS,Arial,Helvetica,sans-serif'
+    }
 }
 
 export default function readableFont(enable=false) {
