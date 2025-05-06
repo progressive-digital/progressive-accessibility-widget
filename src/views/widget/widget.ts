@@ -4,15 +4,15 @@ import { ISeinnaSettings } from "../../sienna";
 import translateMenu from "../menu/translateMenu";
 
 export function renderWidget(options: ISeinnaSettings) {
+    let menu;
     document.querySelectorAll(".asw-container")
     .forEach(widget => {
         if (!(widget instanceof HTMLElement)) {
             return;
         }
 
-        let $btn: HTMLElement = widget.querySelector(".asw-menu-btn");
+        const $btn: HTMLElement = widget.querySelector(".asw-menu-btn");
 
-        let menu;
         $btn?.addEventListener("click", (event) => {
             event.preventDefault();
 
@@ -21,7 +21,7 @@ export function renderWidget(options: ISeinnaSettings) {
             } else {
                 menu = renderMenu({
                     ...options,
-                    container: widget,
+                    container: document.body,
                 });
             }
         });
