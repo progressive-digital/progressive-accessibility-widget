@@ -39,3 +39,10 @@ We welcome contributions from anyone who is interested in improving this. If you
 
 ## 🎓 License
 Sienna is released under the MIT License
+
+## For developers
+For recalculation font size, you need to add `data-aws-breakpoints` to the body element.
+
+```html
+<body data-aws-breakpoints="{&quot;xs&quot;:&quot;all and (max-width: 575px)&quot;,&quot;md&quot;:&quot;all and (min-width: 576px) and (max-width: 991px)&quot;,&quot;lg&quot;:&quot;all and (min-width: 992px)&quot;}">
+```

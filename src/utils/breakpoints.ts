@@ -1,15 +1,29 @@
-import { breakpoints } from "../enum/Breakpoints";
-
-export default function currentBreakpoint() {
-    if (window.matchMedia(`(min-width: ${breakpoints.xxl}px)`).matches) {
-        return breakpoints.xxl;
-    }
-
+export function currentBreakpoint(breakpoints: Record<string, string>) {
     for (const value of Object.values(breakpoints)) {
-        if (window.matchMedia(`(max-width: ${value}px)`).matches) {
+        if (window.matchMedia(value).matches) {
             return value;
         }
     }
 
-    return breakpoints.xs;
+    return Object.values(breakpoints)[0] || '';
+}
+
+export function getBreakpoints() {
+    try {
+        const raw = document.body.dataset["awsBreakpoints"];
+        if (!raw) {
+            throw new Error('Missing data attribute');
+        }
+
+        const parsed = JSON.parse(raw) as Record<string, unknown>;
+
+        return Object.fromEntries(
+            Object.entries(parsed).filter(
+                ([, value]) => typeof value === 'string'
+            )
+        ) as Record<string, string>;
+
+    } catch (e) {
+        // silent error
+    }
 }

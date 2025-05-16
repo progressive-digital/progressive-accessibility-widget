@@ -28,10 +28,6 @@ export default function sienna(args?: ISeinnaSettings) {
         }
         
         runAccessibility();
-
-        window.addEventListener("resize", () => {
-
-        })
     } catch(e) {
         // silent error
     }
