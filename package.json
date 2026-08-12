@@ -1,6 +1,6 @@
 {
   "name": "sienna-accessibility",
-  "version": "1.1",
+  "version": "1.0.4",
   "description": "Sienna: Accessibility Website Widget",
   "main": "./src/entry.ts",
   "directories": {
@@ -10,23 +10,23 @@
   },
   "scripts": {
     "dev": "npx webpack --mode=development --watch",
-    "prod": "npx webpack --mode=production"
+    "prod": "npx webpack --mode=production && node scripts/remove-empty-style-entry.mjs",
+    "test": "npm run prod && node --test tests/*.test.mjs"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bennyluk/Sienna-Accessibility-Widget.git"
+    "url": "git+https://github.com/progressive-digital/progressive-accessibility-widget.git"
   },
-  "author": "Benny Luk",
-  "license": "GNU",
+  "author": "Benny Luk and contributors",
+  "license": "GPL-3.0-only",
   "bugs": {
-    "url": "https://github.com/bennyluk/Sienna-Accessibility-Widget/issues"
+    "url": "https://github.com/progressive-digital/progressive-accessibility-widget/issues"
   },
-  "homepage": "https://accessibility-widget.pages.dev/",
+  "homepage": "https://github.com/progressive-digital/progressive-accessibility-widget",
   "devDependencies": {
     "autoprefixer": "^10.4.14",
     "css-loader": "^6.7.3",
     "html-loader": "^4.2.0",
-    "html-minifier": "^4.0.0",
     "mini-css-extract-plugin": "^2.7.5",
     "postcss-loader": "^7.3.0",
     "raw-loader": "^4.0.2",
@@ -35,6 +35,7 @@
     "style-loader": "^3.3.2",
     "ts-loader": "^9.4.2",
     "typescript": "^5.0.4",
+    "webpack": "5.104.1",
     "webpack-cli": "^5.1.4"
   }
 }
