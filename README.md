@@ -8,6 +8,10 @@
 
 Sienna: accessibility widget for websites. easy to install, just copy and paste the plugin. Fast performance with lightweight plugin (~30kb).
 
+This repository is a Progressive-maintained fork of
+[Benny Luk's Sienna Accessibility Widget](https://github.com/bennyluk/Sienna-Accessibility-Widget).
+The original copyright notice and MIT license are retained.
+
 ## 🎉 Getting Started
 [View Demo](https://accessibility-widget.pages.dev)
 
@@ -38,7 +42,7 @@ Sienna: accessibility widget for websites. easy to install, just copy and paste 
 We welcome contributions from anyone who is interested in improving this. If you would like to contribute, please fork the repository and submit a pull request. ❤️
 
 ## 🎓 License
-This Progressive fork is released under the GNU GPL v3 license; see `LICENSE`.
+Sienna is released under the MIT License; see `LICENSE`.
 
 ## For developers
 
