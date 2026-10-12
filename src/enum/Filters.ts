@@ -1,4 +1,4 @@
-import { TEXT_SELECTORS } from "./Selectors";
+import { TEXT_SELECTORS, withinContentRoots } from "./Selectors";
 import IToolConfig from "../types/IToolConfig";
 
 export interface IFilters {
@@ -12,7 +12,7 @@ export const FILTERS: IFilters = {
             'fill': '#FFF',
             'background-color': '#000'
         },
-        childrenSelector: TEXT_SELECTORS
+        childrenSelector: withinContentRoots(TEXT_SELECTORS)
     },
     'light-contrast': {
         styles: {
@@ -20,7 +20,7 @@ export const FILTERS: IFilters = {
             'fill': '#000',
             'background-color': '#FFF'
         },
-        childrenSelector: TEXT_SELECTORS
+        childrenSelector: withinContentRoots(TEXT_SELECTORS)
     },
     'high-contrast': {
         styles: {
