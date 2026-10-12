@@ -5,7 +5,12 @@ import { TEXT_SELECTORS } from "../enum/Selectors";
 export const readableFontConfig: IToolConfig = {
     id: "readable-font",
     selector: `html`,
-    childrenSelector: ['', '*:not(.material-icons,.fa)', ...TEXT_SELECTORS],
+    childrenSelector: [
+        '',
+        '.dialog-off-canvas-main-canvas *:not(.material-icons,.fa)',
+        '.ui-dialog *:not(.material-icons,.fa)',
+        ...TEXT_SELECTORS
+    ],
     styles: {
         'font-family': 'OpenDyslexic,Comic Sans MS,Arial,Helvetica,sans-serif'
     }
