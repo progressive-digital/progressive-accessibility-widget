@@ -1,11 +1,11 @@
 import { injectToolCSS } from "../utils/cssGenerator";
-import { HEADER_SELECTORS } from "../enum/Selectors";
+import { HEADER_SELECTORS, withinContentRoots } from "../enum/Selectors";
 import IToolConfig from "../types/IToolConfig";
 
 export const highlightTitleConfig: IToolConfig = {
     id: "highlight-title",
     selector: `html`,
-    childrenSelector: HEADER_SELECTORS,
+    childrenSelector: withinContentRoots(HEADER_SELECTORS),
     styles: {
         'outline': '2px solid #0048ff',
         'outline-offset': '2px'

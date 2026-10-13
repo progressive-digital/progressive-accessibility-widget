@@ -1,10 +1,11 @@
 import { injectToolCSS } from "../utils/cssGenerator";
 import IToolConfig from "../types/IToolConfig";
+import { withinContentRoots } from "../enum/Selectors";
 
 export const stopAnimationsConfig: IToolConfig = {
     id: "stop-animations",
     selector: `html`,
-    childrenSelector: ['*'],
+    childrenSelector: withinContentRoots(['', '*']),
     styles: {
         'transition': 'none',
         'animation-fill-mode': 'forwards',
