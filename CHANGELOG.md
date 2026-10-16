@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.5 - 2026-08-12
+
+- Restored the canonical Sienna MIT license and original copyright notice.
+- Aligned package metadata and documentation with the upstream license.
+- Added an automated license-integrity test; runtime assets are unchanged.
+
 ## 1.0.4 - 2026-08-12
 
 - Added native light, dark and system color schemes.
