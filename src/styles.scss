@@ -346,6 +346,26 @@ html[data-pd-theme="dark"] .asw-menu {
   }
 }
 
+// Keyboard focus stays visible on every panel control, also against host resets.
+.asw-menu {
+  &:focus {
+    outline: none;
+  }
+
+  [role="button"],
+  .asw-btn,
+  .asw-select {
+    &:focus-visible {
+      outline: 3px solid var(--asw-text) !important;
+      outline-offset: 2px !important;
+    }
+  }
+
+  .asw-menu-header [role="button"]:focus-visible {
+    outline-color: var(--asw-accent-text) !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .asw-menu,
   .asw-menu-header div[role="button"],

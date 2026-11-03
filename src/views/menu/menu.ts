@@ -6,7 +6,7 @@ import ContentButtons from "./ContentButtons";
 import ToolButtons from "../../enum/TOOL_PRESETS";
 
 import renderButtons from "./renderButtons";
-import toggle from "../../utils/toggle";
+import { bindDialogKeys, closeMenu } from "./dialog";
 import adjustFontSize from "../../tools/adjustFontSize";
 import renderTools from "./renderTools";
 import { getSettings, getState, saveSettings, saveState } from "../../storage";
@@ -43,7 +43,7 @@ export function renderMenu({
 
     $container.querySelectorAll('.asw-menu-close, .asw-overlay').forEach((el: HTMLElement) => {
         el.addEventListener('click', () => {
-            toggle($container, false)
+            closeMenu($container);
         });
     })
 
@@ -77,6 +77,7 @@ export function renderMenu({
             if(el.classList.contains('asw-filter')) {
                 $menu.querySelectorAll('.asw-filter').forEach((el: HTMLElement) => {
                     el.classList.remove('asw-selected');
+                    el.setAttribute('aria-pressed', 'false');
                 });
 
                 saveState({
@@ -85,11 +86,13 @@ export function renderMenu({
 
                 if(isSelected) {
                     el.classList.add('asw-selected');
+                    el.setAttribute('aria-pressed', 'true');
                 }
 
                 renderFilter();
             } else {
                 el.classList.toggle('asw-selected', isSelected);
+                el.setAttribute('aria-pressed', String(isSelected));
 
                 saveState({
                     [key]: isSelected
@@ -138,10 +141,15 @@ export function renderMenu({
         for(let key in settings.states) {
             if(settings.states[key] && key !== "fontSize") {
                 let selector = key === "contrast" ? settings.states[key] : key;
-                $menu.querySelector(`.asw-btn[data-key="${ selector }"]`)?.classList?.add("asw-selected")
+                const $btn = $menu.querySelector(`.asw-btn[data-key="${ selector }"]`);
+                $btn?.classList.add("asw-selected");
+                $btn?.setAttribute("aria-pressed", "true");
             }
         }
     }
+
+    $container.querySelectorAll("svg").forEach(svg => svg.setAttribute("aria-hidden", "true"));
+    bindDialogKeys($container, $menu);
 
     container.appendChild($container);
 
