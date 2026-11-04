@@ -1,6 +1,6 @@
 {
   "name": "sienna-accessibility",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "description": "Sienna: Accessibility Website Widget",
   "main": "./src/entry.ts",
   "directories": {

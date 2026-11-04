@@ -6,5 +6,8 @@ export default function reset() {
 
     runAccessibility();
 
-    document?.querySelectorAll(".asw-selected")?.forEach(el => el?.classList?.remove("asw-selected"))
+    document?.querySelectorAll(".asw-selected")?.forEach(el => {
+        el.classList.remove("asw-selected");
+        el.setAttribute("aria-pressed", "false");
+    })
 }
