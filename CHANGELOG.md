@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.8 - 2026-11-05
+
+- At 100% font size the widget no longer writes inline font sizes, so CSS that loads later keeps working.
+
 ## 1.0.7 - 2026-11-03
 
 - Exposed the menu as a named modal dialog (`role="dialog"`, `aria-modal`, `aria-labelledby`).
