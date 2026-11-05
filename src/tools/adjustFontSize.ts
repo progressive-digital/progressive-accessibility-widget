@@ -5,6 +5,13 @@ export default function adjustFontSize(multiply:number = 1) {
         .querySelectorAll(withinContentRoots(FONT_SIZE_SELECTORS).join(","))
         .forEach((el: HTMLElement) => {
             if(!el.classList.contains('material-icons') && !el.classList.contains('fa')) {
+                // At 100% the page keeps its own sizes, also for CSS that loads later.
+                if (multiply === 1) {
+                    el.style['font-size'] = '';
+                    el.removeAttribute('data-asw-orgFontSize');
+                    return;
+                }
+
                 let orgFontSize = Number(el.getAttribute('data-asw-orgFontSize') ?? 0);
     
                 if(!orgFontSize) {

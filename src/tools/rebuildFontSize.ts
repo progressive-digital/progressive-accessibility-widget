@@ -9,6 +9,11 @@ export default function rebuildFontSize(multiply:number = 1) {
                     el.style['font-size'] = '';
                 }
 
+                if (multiply === 1) {
+                    el.removeAttribute('data-asw-orgFontSize');
+                    return;
+                }
+
                 const orgFontSize = parseInt(window.getComputedStyle(el).getPropertyValue('font-size'));
                 el.setAttribute('data-asw-orgFontSize', String(orgFontSize));
 
